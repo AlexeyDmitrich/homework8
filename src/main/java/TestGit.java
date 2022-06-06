@@ -3,4 +3,8 @@ public class TestGit {
         System.out.print("Класс создан исключительно для тренировки работы в git \n");
         // стартовая версия
     }
+    public static void printTestText(){
+        System.out.println("Вторая версия");
+        // проект с первыми изменениями
+    }
 }
