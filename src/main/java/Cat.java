@@ -1,4 +1,4 @@
-public class Cat {
+public class Cat implements motion{
     private String name;
     private float weight;
 
@@ -16,4 +16,18 @@ public class Cat {
     }
 
 
+    @Override
+    public void run(int distance) {
+        if (distance > 0 && distance <= 150){
+            System.out.printf("%s пробежал %d метров");
+        } else if (distance > 150){
+            // todo: внести реализацию
+        }
+
+    }
+
+    @Override
+    public void jump(int high) {
+
+    }
 }

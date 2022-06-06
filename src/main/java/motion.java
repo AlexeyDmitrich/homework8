@@ -1,4 +1,4 @@
 public interface motion {
-    int run (int distance);
-    int jump (int high);
+    void run (int distance);
+    void jump (int high);
 }
