@@ -5,6 +5,7 @@ public class TestGit {
         printTestText();
         String third = "третья версия";
         finalyTest(third);
+        SecondGitTest.merge();
 
     }
     public static void printTestText(){

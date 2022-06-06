@@ -7,4 +7,7 @@ public class SecondGitTest {
     static void info(){
         System.out.println("Ветка сделана для работы с другого ПК");
     }
+    static void merge(){
+        System.out.println("Произведено слияние веток");
+    }
 }
