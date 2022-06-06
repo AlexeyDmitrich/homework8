@@ -3,10 +3,19 @@ public class TestGit {
         System.out.print("Класс создан исключительно для тренировки работы в git \n");
         // стартовая версия
         printTestText();
-        // третья версия
+        String third = "третья версия";
+        finalyTest(third);
+
     }
     public static void printTestText(){
-        System.out.println("Вторая версия");
+        String version = "вторая версия";
+        System.out.println(version);
         // проект с первыми изменениями
+    }
+
+    static void finalyTest (String last){
+        System.out.println(last + "с окончательными изменениями");
+
+
     }
 }
