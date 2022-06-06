@@ -3,4 +3,7 @@ public class SecondGitTest {
         System.out.println("Новая ветка");
         // тест версии с новой веткой
     }
+    static void info(){
+        System.out.println("Ветка сделана для работы с другого ПК");
+    }
 }
