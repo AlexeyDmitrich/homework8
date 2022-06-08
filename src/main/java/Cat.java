@@ -20,14 +20,21 @@ public class Cat implements motion{
         weight = 8;
     }
 
-    @Override
-    public void run(int distance, String name, int limit, boolean moveNext) {
-        motion.super.run(distance, name, limit, moveNext);
+    public void catRun (int distance){
+        run(distance, name, runLimit, moveNext);
     }
-
+    public void catJump (int high){
+        jump(high, name, barier, jumpLimit, moveNext);
+    }
     @Override
-    public void jump(int high, String name, int barier, int limit, boolean moveNext) {
-        motion.super.jump(high, name, barier, limit, moveNext);
+    public boolean run(int distance, String name, int limit, boolean moveNext) {
+        this.moveNext = motion.super.run(distance, name, limit, moveNext);
+        return moveNext;
+    }
+    @Override
+    public boolean jump(int high, String name, int barier, int limit, boolean moveNext) {
+        this.moveNext = motion.super.jump(high, name, barier, limit, moveNext);
+        return moveNext;
     }
 
     public void aboutCat(){

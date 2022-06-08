@@ -21,13 +21,15 @@ public class Human implements motion{
     }
 
     @Override
-    public void run(int distance, String name, int limit, boolean moveNext) {
+    public boolean run(int distance, String name, int limit, boolean moveNext) {
         motion.super.run(distance, name, limit, moveNext);
+        return moveNext;
     }
 
     @Override
-    public void jump(int high, String name, int barier, int limit, boolean moveNext) {
+    public boolean jump(int high, String name, int barier, int limit, boolean moveNext) {
         motion.super.jump(high, name, barier, limit, moveNext);
+        return moveNext;
     }
 
     public void aboutCat(){
