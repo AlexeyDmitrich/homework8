@@ -1,12 +1,12 @@
 public class Cat implements motion{
     private String name;
-    private float weight;
-    private int runLimit;
-    private int jumpLimit;
-    private int barier;
+    private double weight;
+    private double runLimit;
+    private double jumpLimit;
+    private double barier;
     boolean moveNext;
 
-    public Cat(String name, int weight) {
+    public Cat(String name, double weight) {
         this.name = name;
         this.weight = weight;
         this.runLimit = 370 - (weight * 20);
@@ -20,25 +20,49 @@ public class Cat implements motion{
         weight = 8;
     }
 
-    public void catRun (int distance){
+    public void catRun (double distance){
         run(distance, name, runLimit, moveNext);
+        if (weight < 2){
+            System.out.println("|#################################|");
+            System.out.println("|             ВНИМАНИЕ!           |");
+            System.out.println("|            кот истощен          |");
+            System.out.println("|  и не может продолжить движение |");
+            System.out.println("|_________________________________|");
+            moveNext = false;
+        }
     }
-    public void catJump (int high){
+    public void catJump (double high){
         jump(high, name, barier, jumpLimit, moveNext);
     }
     @Override
-    public boolean run(int distance, String name, int limit, boolean moveNext) {
+    public boolean run(double distance, String name, double limit, boolean moveNext) {
         this.moveNext = motion.super.run(distance, name, limit, moveNext);
+        if(moveNext) {
+            weight -= distance / 4000;
+            runLimit += distance / 1000;
+        }
         return moveNext;
     }
     @Override
-    public boolean jump(int high, String name, int barier, int limit, boolean moveNext) {
+    public boolean jump(double high, String name, double barier, double limit, boolean moveNext) {
         this.moveNext = motion.super.jump(high, name, barier, limit, moveNext);
+        if(moveNext) {
+            jumpLimit += high / 20;
+            this.barier += high / 23;
+        }
         return moveNext;
     }
 
     public void aboutCat(){
-        System.out.printf("Кота зовут %s; \nвесит %g килограмм", name, weight);
+        System.out.printf("Кота зовут %s, \nвесит %.1f килограмм, ", name, weight);
+        if (moveNext){
+            System.out.print("готов продолжить движение.\n");
+        } else {
+            System.out.print("не может продолжать движение.\n");
+        }
+        System.out.printf("%s способен пробежать %.0f метров за один раз;\n", name, runLimit);
+        System.out.printf("может запрыгнуть на препятствие выотой %.1f м. \n", barier);
+
     }
 
 }
