@@ -1,4 +1,7 @@
+import java.util.Random;
+
 public class Cat implements motion{
+    static Random rnd = new Random();
     private String name;
     private double weight;
     private double runLimit;
@@ -65,4 +68,19 @@ public class Cat implements motion{
 
     }
 
+    public static double catWeightGen(){
+        double weight = 2.2;
+        //TODO: добавить пределы рандомизации каждому типу!
+        weight = (rnd.nextInt(9)) * 0.9;
+        return weight;
+    }
+
+    public static String catNameGen (){
+        String name = null;
+        //TODO: добавить массивы имен для случайного выбора
+        String catsNames[] = { };
+        // перебор для 8 имён в массиве
+        name = catsNames[rnd.nextInt(8)];
+        return name;
+    }
 }

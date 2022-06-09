@@ -1,4 +1,7 @@
+import java.util.Random;
+
 public class Human implements motion{
+    static Random rnd = new Random();
     private String name;
     private double weight;
     private double runLimit;
@@ -65,5 +68,19 @@ public class Human implements motion{
         System.out.printf("может перепрыгнуть препятствие выотой %.1f м. \n", barier);
     }
 
+    public static double humanWeightGen(){
+        double weight = 41.2;
+        //TODO: добавить пределы рандомизации каждому типу!
+        weight = (rnd.nextInt(41+131)-41) * 0.9;
+        return weight;
+    }
 
+    public static String humanNameGen (){
+        String name = null;
+        //TODO: добавить массивы имен для случайного выбора
+        String humanNames[] = { };
+        // перебор для 8 имён в массиве
+        name = humanNames[rnd.nextInt(8)];
+        return name;
+    }
 }

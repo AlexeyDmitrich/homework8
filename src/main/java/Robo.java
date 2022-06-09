@@ -1,4 +1,7 @@
+import java.util.Random;
+
 public class Robo implements motion {
+    static Random rnd = new Random();
     private String name;
     private double weight;
     private double runLimit;
@@ -47,5 +50,19 @@ public class Robo implements motion {
         System.out.printf("может запрыгнуть на препятствие выотой %.1f м. \n", barier);
     }
 
+    public static double roboWeightGen(){
+        double weight = 40;
+        //TODO: добавить пределы рандомизации каждому типу!
+        weight = (rnd.nextInt(40+350)-40) * 0.9;
+        return weight;
+    }
 
+    public static String roboNameGen (){
+        String name = null;
+        //TODO: добавить массивы имен для случайного выбора
+        String roboNames[] = { };
+        // перебор для 8 имён в массиве
+        name = roboNames[rnd.nextInt(8)];
+        return name;
+    }
 }
