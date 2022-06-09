@@ -42,4 +42,6 @@ public interface motion {
         }
         return moveNext;
     }
+
+    void aboutRunner();
 }

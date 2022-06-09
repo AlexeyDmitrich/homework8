@@ -57,7 +57,8 @@ public class Human implements motion{
         return moveNext;
     }
 
-    public void aboutHuman(){
+@Override
+    public void aboutRunner(){
         System.out.printf("Человека зовут %s; \nвесит %.1f килограмм, ", name, weight);
         if (moveNext){
             System.out.print("готов продолжить движение.\n");
@@ -71,16 +72,16 @@ public class Human implements motion{
     public static double humanWeightGen(){
         double weight = 41.2;
         //TODO: добавить пределы рандомизации каждому типу!
-        weight = (rnd.nextInt(41+131)-41) * 0.9;
+        weight = (rnd.nextInt(90)+41) * 0.9;
         return weight;
     }
 
     public static String humanNameGen (){
         String name = null;
         //TODO: добавить массивы имен для случайного выбора
-        String humanNames[] = { };
+        String humanNames[] = {"Роман", "Платон", "Сергей", "Евгений", "Семен", "Анатолий", "Олег", "Адам", "Игорь", "Филипп", "Артур", "Валерий", "Ян", "Назар", "Александр", "Владимир", "Дмитрий", "Николай", "Юрий", "Алексей", "Иван", "Виктор" };
         // перебор для 8 имён в массиве
-        name = humanNames[rnd.nextInt(8)];
+        name = humanNames[rnd.nextInt(humanNames.length + 1)];
         return name;
     }
 }

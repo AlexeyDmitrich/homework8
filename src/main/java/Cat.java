@@ -55,8 +55,8 @@ public class Cat implements motion{
         }
         return moveNext;
     }
-
-    public void aboutCat(){
+@Override
+    public void aboutRunner(){
         System.out.printf("Кота зовут %s, \nвесит %.1f килограмм, ", name, weight);
         if (moveNext){
             System.out.print("готов продолжить движение.\n");
@@ -65,22 +65,21 @@ public class Cat implements motion{
         }
         System.out.printf("%s способен пробежать %.0f метров за один раз;\n", name, runLimit);
         System.out.printf("может запрыгнуть на препятствие выотой %.1f м. \n", barier);
-
     }
 
     public static double catWeightGen(){
         double weight = 2.2;
         //TODO: добавить пределы рандомизации каждому типу!
-        weight = (rnd.nextInt(9)) * 0.9;
+        weight = (rnd.nextInt(9)+1) * 0.9;
         return weight;
     }
 
     public static String catNameGen (){
         String name = null;
         //TODO: добавить массивы имен для случайного выбора
-        String catsNames[] = { };
+        String catsNames[] = {"Кокс", "Лаврентий", "Феликс", "Платон", "Барсик", "Селантий", "Матроскин", "Саймон", "Чешир", "кот Шрёдингера", "Иосиф", "Баюн", "Пиночет"};
         // перебор для 8 имён в массиве
-        name = catsNames[rnd.nextInt(8)];
+        name = catsNames[rnd.nextInt(catsNames.length + 1)];
         return name;
     }
 }

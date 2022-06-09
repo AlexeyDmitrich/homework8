@@ -39,7 +39,8 @@ public class Robo implements motion {
         this.moveNext = motion.super.jump(high, name, barier, limit, moveNext);
         return moveNext;
     }
-    public void aboutRobot(){
+@Override
+    public void aboutRunner(){
         System.out.printf("Робот называется %s; \nвесит %.0f килограмм, ", name, weight);
         if (moveNext){
             System.out.print("готов продолжить движение.\n");
@@ -53,16 +54,16 @@ public class Robo implements motion {
     public static double roboWeightGen(){
         double weight = 40;
         //TODO: добавить пределы рандомизации каждому типу!
-        weight = (rnd.nextInt(40+350)-40) * 0.9;
+        weight = (rnd.nextInt(350) + 40) * 0.9;
         return weight;
     }
 
     public static String roboNameGen (){
         String name = null;
         //TODO: добавить массивы имен для случайного выбора
-        String roboNames[] = { };
+        String roboNames[] = {"Atmega-droidA31", "Astra-214", "Ubi-21M", "Xenon-L2", "RBT-T1", "Knoppix-1", "Amnesia", "Tails-SPA", "Oracle-L", "Mandrake-X", "Scientific-N13", "Qubes-S2", "Mandriva-L", "Manjaro-X5", "Antergos-X" };
         // перебор для 8 имён в массиве
-        name = roboNames[rnd.nextInt(8)];
+        name = roboNames[rnd.nextInt(roboNames.length + 1)];
         return name;
     }
 }
