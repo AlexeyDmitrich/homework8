@@ -26,7 +26,7 @@ public class Road implements Difficultness {
 
     @Override
     public void about() {
-        System.out.println("Впереди дорога длиной " + length + " м.");
+        System.out.printf("Впереди дорога длиной %.2f м.", length);
     }
 
 }

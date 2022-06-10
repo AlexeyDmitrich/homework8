@@ -26,6 +26,6 @@ public class Wall implements Difficultness{
 
     @Override
     public void about() {
-        System.out.println("Стена высотой " + high + " м.");
+        System.out.printf("На пути стена высотой %.2f м.", high);
     }
 }

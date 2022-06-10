@@ -41,7 +41,7 @@ public class Robo implements motion {
     }
 @Override
     public void aboutRunner(){
-        System.out.printf("Робот называется %s; \nвесит %.0f килограмм, ", name, weight);
+        System.out.printf("Робот. \nНазвание: %s; \nвесит %.0f килограмм; \n", name, weight);
         if (moveNext){
             System.out.print("готов продолжить движение.\n");
         } else {
@@ -51,19 +51,32 @@ public class Robo implements motion {
         System.out.printf("может запрыгнуть на препятствие выотой %.1f м. \n", barier);
     }
 
+
+    @Override
+    public boolean goOn(Difficultness step) {
+        if (step instanceof Wall){
+            roboJump(step.high());
+        } else if (step instanceof Road) {
+            roboRun(((Road) step).length);
+        }
+        return moveNext;
+    }
+    @Override
+    public boolean getMoveNext() {
+        return moveNext;
+    }
+
     public static double roboWeightGen(){
         double weight = 40;
-        //TODO: добавить пределы рандомизации каждому типу!
         weight = (rnd.nextInt(350) + 40) * 0.9;
         return weight;
     }
 
     public static String roboNameGen (){
         String name = null;
-        //TODO: добавить массивы имен для случайного выбора
         String roboNames[] = {"Atmega-droidA31", "Astra-214", "Ubi-21M", "Xenon-L2", "RBT-T1", "Knoppix-1", "Amnesia", "Tails-SPA", "Oracle-L", "Mandrake-X", "Scientific-N13", "Qubes-S2", "Mandriva-L", "Manjaro-X5", "Antergos-X" };
         // перебор для 8 имён в массиве
-        name = roboNames[rnd.nextInt(roboNames.length + 1)];
+        name = roboNames[rnd.nextInt(roboNames.length)];
         return name;
     }
 }

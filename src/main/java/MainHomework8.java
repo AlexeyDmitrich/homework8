@@ -17,12 +17,16 @@ Robo[] robosTeam = new Robo[5];
         int arr = input.nextInt();
         motion[] runners = new motion[arr];
         runnerIncubator(runners, arr);
+        System.out.println("В забеге примут участие:");
         runnersList(runners);
         System.out.println("Введите количество препятствий");
         int arrDiff = input.nextInt();
         Difficultness[] steps = new Difficultness[arrDiff];
         difficultnessBuilder(steps, arrDiff);
         stepList(steps);
+
+        start(runners, steps);
+        winners(runners, steps);
 
 
     }
@@ -39,7 +43,7 @@ Robo[] robosTeam = new Robo[5];
             } else if (typeIndex == 2) {
                 runners[id] = new Robo(Robo.roboNameGen(), Robo.roboWeightGen());
             }
-            System.out.println("Добавлен участник " + runners[id] + " под номером " + id);
+    //        System.out.println("Добавлен участник " + runners[id] + " под номером " + id);
             id += 1;
         }
         //return runners[id];
@@ -47,15 +51,18 @@ Robo[] robosTeam = new Robo[5];
 
     static void difficultnessBuilder (Difficultness[] steps, int arrDiffLength){
         int id = 0;
+        while (id < arrDiffLength) {
+            int typeIndex;
+            typeIndex = rnd.nextInt(2);
+            if (typeIndex == 0) {
+                steps[id] = new Road(rnd.nextInt(10000) * 0.8);
+            } else if (typeIndex == 1) {
+                steps[id] = new Wall(rnd.nextInt(7) * 0.7);
+            }
+    //        System.out.println("добавлено препятствие: " + steps[id] + ". " + steps[id].difficult() + " м.");
 
-        int typeIndex;
-        typeIndex = rnd.nextInt(2);
-        if (typeIndex == 0){
-            steps[id] = new Road(rnd.nextInt(10000) * 0.8);
-        } else if (typeIndex == 1) {
-            steps[id] = new Wall(rnd.nextInt(7)*0.7);
+            id += 1;
         }
-        System.out.println("добавлено препятствие: " + steps[id] + ". " + steps[id].difficult() + " м.");
     }
     static void runnersList(motion[] runners){
         for (int i = 0; i < runners.length; i++) {
@@ -67,6 +74,32 @@ Robo[] robosTeam = new Robo[5];
         for (int i = 0; i < steps.length; i++) {
             steps[i].about();
             System.out.println();
+        }
+    }
+
+    static void start (motion[] runners, Difficultness[] steps){
+        for (int i = 0; i < runners.length; i++) {
+            for (int j = 0; j < steps.length; j++){
+                runners[i].goOn(steps[j]);
+            }
+        /*      */
+        }
+    }
+
+    static void winners (motion[] runners, Difficultness[] steps){
+        int winner = 0;
+        for (int i = 0; i < runners.length; i++) {
+            for (int j = steps.length-1; j < steps.length; j++) {
+                if (runners[i].getMoveNext()) {
+                    winner += 1;
+                    System.out.print("Победитель №" + winner + ":\n" );
+                    runners[i].aboutRunner();
+                    //input.nextLine();
+                }
+            }
+        }
+        if (winner == 0){
+            System.out.println("В этом забеге победил организатор препятствий");
         }
     }
 }

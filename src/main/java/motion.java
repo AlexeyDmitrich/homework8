@@ -44,4 +44,7 @@ public interface motion {
     }
 
     void aboutRunner();
+
+    boolean goOn(Difficultness step);
+    boolean getMoveNext();
 }
